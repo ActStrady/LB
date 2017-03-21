@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bean.User" table="user" catalog="lb">
+        <id name="uid" type="java.lang.Integer">
+            <column name="uid" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="rid" type="java.lang.Integer">
+            <column name="rid" not-null="true" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" not-null="true" />
+        </property>
+	<many-to-one name="role" column="rid" insert="false" update="false"/>
+    </class>
+</hibernate-mapping>

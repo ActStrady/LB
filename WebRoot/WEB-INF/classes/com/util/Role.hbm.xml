@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bean.Role" table="role" catalog="lb">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="rname" type="java.lang.String">
+            <column name="rname" not-null="true" />
+        </property>
+        <set name="permission" inverse="true" table="role_permission">
+            <key>
+                <column name="rid" not-null="true" />
+            </key>
+            <one-to-many class="com.bean.Permission" />
+        </set>
+    </class>
+</hibernate-mapping>
